@@ -2,7 +2,8 @@ package com.metrics.javascript.core.example;
 
 import com.metrics.javascript.core.example.util.ApplicationUtils;
 
-import java.util.concurrent.ExecutorService;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.time.StopWatch;
@@ -13,26 +14,27 @@ public class Application {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         LOGGER.info("Started evaluating Javascript");
 
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        final ExecutorService executorService = ApplicationUtils.initExecutorService();
-
         final String javascript = ApplicationUtils.getResourceContent("example.js");
+        final Map<String, Object> javascriptParams = new HashMap<String, Object>();
+
+        final JavascriptEvaluator javascriptEvaluator = new JavascriptEvaluator();
 
         for (int i = 0; i < 10000; i++) {
-            executorService.execute(new EvaluateJavascript(javascript));
+            javascriptParams.put("aNumber", ApplicationUtils.generateRandomInt(1, 100));
+            javascriptEvaluator.evaluate(javascript, javascriptParams);
         }
-        executorService.shutdown();
-        executorService.awaitTermination(100, TimeUnit.MINUTES);
-
         stopWatch.stop();
 
         LOGGER.info("Finished evaluating Javascript in {} seconds", stopWatch.getTime(TimeUnit.SECONDS));
     }
+
+
 }
 
