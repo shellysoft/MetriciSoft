@@ -5,6 +5,7 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -20,6 +21,11 @@ public class ApplicationUtils {
 
     private static final String RHINO_SCRIPT_ENGINE_FACTORY = "de.christophkraemer.rhino.javascript.RhinoScriptEngineFactory";
     private static final String NASHORN_SCRIPT_ENGINE_FACTORY = "jdk.nashorn.api.scripting.NashornScriptEngineFactory";
+
+    public static int generateRandomInt(int min, int max) {
+        final Random random = new Random();
+        return random.nextInt(max + 1 - min) + min;
+    }
 
     public static String getResourceContent(String resourceName) {
 

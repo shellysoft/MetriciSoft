@@ -25,6 +25,7 @@ public class EvaluateJavascript implements Runnable {
 
         final Object result;
         try {
+            scriptEngine.put("aNumber", ApplicationUtils.generateRandomInt(1, 100));
             result = scriptEngine.eval(
                     javascript);
             LOGGER.info("Result of script evaluation is {}", result);
