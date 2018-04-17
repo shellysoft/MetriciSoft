@@ -32,12 +32,12 @@ public class ApplicationOptimized {
 
         final String javascript = ApplicationUtils.getResourceContent("example.js");
         final ScriptEngine scriptEngine = ApplicationUtils.initJavascriptEngine();
-        final Map<String, Object> javascriptParams = new HashMap<String, Object>();
+        final Map<String, Object> javascriptParams = new HashMap<>();
 
         final OptimizedJavascriptEvaluator javascriptEvaluator = new OptimizedJavascriptEvaluator();
 
         for (int i = 0; i < 10000; i++) {
-            javascriptParams.put("aNumber", ApplicationUtils.generateRandomInt(1, 100));
+            javascriptParams.put("aNumber", ApplicationUtils.generateRandomInteger(1, 100));
             javascriptEvaluator.evaluate(scriptEngine, javascript, javascriptParams);
         }
         stopWatch.stop();

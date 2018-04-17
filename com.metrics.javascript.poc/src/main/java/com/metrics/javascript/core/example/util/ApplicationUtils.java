@@ -22,16 +22,16 @@ public class ApplicationUtils {
     private static final String RHINO_SCRIPT_ENGINE_FACTORY = "de.christophkraemer.rhino.javascript.RhinoScriptEngineFactory";
     private static final String NASHORN_SCRIPT_ENGINE_FACTORY = "jdk.nashorn.api.scripting.NashornScriptEngineFactory";
 
-    public static int generateRandomInt(int min, int max) {
+    public static int generateRandomInteger(final int min, final int max) {
         final Random random = new Random();
         return random.nextInt(max + 1 - min) + min;
     }
 
-    public static String getResourceContent(String resourceName) {
+    public static String getResourceContent(final String resourceName) {
 
         String result = "";
 
-        ClassLoader classLoader = ApplicationUtils.class.getClassLoader();
+        final ClassLoader classLoader = ApplicationUtils.class.getClassLoader();
         try {
             result = IOUtils.toString(classLoader.getResourceAsStream(resourceName), Charset.forName("UTF-8"));
         } catch (Exception e) {

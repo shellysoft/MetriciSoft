@@ -28,12 +28,12 @@ public class Application {
         stopWatch.start();
 
         final String javascript = ApplicationUtils.getResourceContent("example.js");
-        final Map<String, Object> javascriptParams = new HashMap<String, Object>();
+        final Map<String, Object> javascriptParams = new HashMap<>();
 
         final JavascriptEvaluator javascriptEvaluator = new JavascriptEvaluator();
 
         for (int i = 0; i < 10000; i++) {
-            javascriptParams.put("aNumber", ApplicationUtils.generateRandomInt(1, 100));
+            javascriptParams.put("aNumber", ApplicationUtils.generateRandomInteger(1, 100));
             javascriptEvaluator.evaluate(javascript, javascriptParams);
         }
         stopWatch.stop();
