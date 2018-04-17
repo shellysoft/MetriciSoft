@@ -1,6 +1,6 @@
-package com.metrics.optimization.core.example;
+package com.metrics.javascript.core.example;
 
-import com.metrics.optimization.core.example.util.ApplicationUtils;
+import com.metrics.javascript.core.example.util.ApplicationUtils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;

@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 	
 	<modules>
-		<module>com.metrics.optimization.core</module>
+		<module>com.metrics.javascript.poc</module>
 	</modules>
 	
     <build>

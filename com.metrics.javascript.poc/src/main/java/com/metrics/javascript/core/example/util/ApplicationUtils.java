@@ -1,4 +1,4 @@
-package com.metrics.optimization.core.example.util;
+package com.metrics.javascript.core.example.util;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;

@@ -10,8 +10,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.metrics.optimization</groupId>
-    <artifactId>com.metrics.optimization.core</artifactId>
+    <groupId>com.metrics.javascript</groupId>
+    <artifactId>com.metrics.javascript.poc</artifactId>
     <packaging>jar</packaging>
     <build>
         <plugins>

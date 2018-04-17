@@ -1,6 +1,6 @@
-package com.metrics.optimization.core.example.optimized;
+package com.metrics.javascript.core.example;
 
-import com.metrics.optimization.core.example.EvaluateJavascript;
+import com.metrics.javascript.core.example.util.ApplicationUtils;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -8,20 +8,21 @@ import javax.script.ScriptException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EvaluateScriptOptimized implements Runnable {
+public class EvaluateJavascript implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluateJavascript.class);
 
-    private final ScriptEngine scriptEngine;
-
     private final String javascript;
 
-    public EvaluateScriptOptimized(ScriptEngine scriptEngine, String javascript) {
-        this.scriptEngine = scriptEngine;
+    public EvaluateJavascript(String javascript) {
         this.javascript = javascript;
     }
 
     public void run() {
+        final ScriptEngine scriptEngine = ApplicationUtils.initJavascriptEngine();
+
+        LOGGER.debug("Javascript engine used: {}", scriptEngine.getClass().getSimpleName());
+
         final Object result;
         try {
             result = scriptEngine.eval(

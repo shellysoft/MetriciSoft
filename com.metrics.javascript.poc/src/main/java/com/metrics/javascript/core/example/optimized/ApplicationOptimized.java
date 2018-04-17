@@ -1,7 +1,7 @@
-package com.metrics.optimization.core.example.optimized;
+package com.metrics.javascript.core.example.optimized;
 
-import com.metrics.optimization.core.example.Application;
-import com.metrics.optimization.core.example.util.ApplicationUtils;
+import com.metrics.javascript.core.example.Application;
+import com.metrics.javascript.core.example.util.ApplicationUtils;
 
 import javax.script.ScriptEngine;
 import java.util.concurrent.ExecutorService;
