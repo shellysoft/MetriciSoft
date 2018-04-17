@@ -34,17 +34,11 @@ public class ApplicationUtils {
         ClassLoader classLoader = ApplicationUtils.class.getClassLoader();
         try {
             result = IOUtils.toString(classLoader.getResourceAsStream(resourceName), Charset.forName("UTF-8"));
-        } catch (IOException e) {
+        } catch (Exception e) {
             LOGGER.error("An error occurred while reading the resource {}", resourceName, e);
         }
 
         return result;
-    }
-
-    public static ExecutorService initExecutorService() {
-        return new ThreadPoolExecutor(0, 100,
-                60L, TimeUnit.SECONDS,
-                new SynchronousQueue<Runnable>(), new ThreadPoolExecutor.CallerRunsPolicy());
     }
 
     public static ScriptEngine initJavascriptEngine() {

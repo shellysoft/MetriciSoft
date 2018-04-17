@@ -18,6 +18,13 @@ public class ApplicationOptimized {
 
     public static void main(String[] args) throws Exception {
 
+        // For Didactic purposes, wait until Visual VM is initialized
+        try {
+            TimeUnit.MILLISECONDS.sleep(10000);
+        } catch (Exception e) {
+            LOGGER.error("An exception occurred during initial wait", e);
+        }
+
         LOGGER.info("Started evaluating Javascript");
 
         final StopWatch stopWatch = new StopWatch();

@@ -14,7 +14,7 @@ public class JavascriptEvaluatorTest {
     @Test
     public void testJavascriptEvaluator() {
 
-        final String javascript = ApplicationUtils.getResourceContent("example.js");
+        final String javascript = ApplicationUtils.getResourceContent("test.js");
         final Map<String, Object> javascriptParams = new HashMap<String, Object>();
 
         final JavascriptEvaluator javascriptEvaluator = new JavascriptEvaluator();

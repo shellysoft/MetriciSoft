@@ -15,6 +15,12 @@ public class Application {
     private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
+        // For Didactic purposes, wait until Visual VM is initialized
+        try {
+            TimeUnit.MILLISECONDS.sleep(10000);
+        } catch (Exception e) {
+            LOGGER.error("An exception occurred during initial wait", e);
+        }
 
         LOGGER.info("Started evaluating Javascript");
 
