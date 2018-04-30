@@ -2,6 +2,8 @@ package com.metrics.javascript.example;
 
 import com.metrics.javascript.core.example.JavascriptEvaluator;
 import com.metrics.javascript.core.example.util.ApplicationUtils;
+import com.metrics.javascript.model.Message;
+import com.metrics.javascript.model.Tx;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,16 +17,43 @@ public class JavascriptEvaluatorTest {
 
 
     @Test
-    public void testJavascriptEvaluator() {
+    public void testFilterJavascript() {
 
-        final String javascript = ApplicationUtils.getResourceContent("test.js");
+        final String javascript = ApplicationUtils.getResourceContent("testMessage.js");
         final Map<String, Object> javascriptParams = new HashMap<>();
 
         final JavascriptEvaluator javascriptEvaluator = new JavascriptEvaluator();
-        javascriptParams.put("aNumber", 10);
+        final Message message = new Message();
+        final Tx tx = new Tx();
+        tx.setMessageTypeId("104");
+        tx.setTransactionType("pain");
+        tx.setCounterpartyBank("TET1");
+        tx.setCustomerCountryCode("DE");
+        message.setBody(tx);
+        javascriptParams.put("request", message);
         final Object result = javascriptEvaluator.evaluate(javascript, javascriptParams);
 
-        Assert.assertEquals(result, true);
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void testNoFilterJavascript() {
+
+        final String javascript = ApplicationUtils.getResourceContent("testMessage.js");
+        final Map<String, Object> javascriptParams = new HashMap<>();
+
+        final JavascriptEvaluator javascriptEvaluator = new JavascriptEvaluator();
+        final Message message = new Message();
+        final Tx tx = new Tx();
+        tx.setMessageTypeId("104");
+        tx.setTransactionType("pain");
+        tx.setCounterpartyBank("TEST1");
+        tx.setCustomerCountryCode("DE");
+        message.setBody(tx);
+        javascriptParams.put("request", message);
+        final Object result = javascriptEvaluator.evaluate(javascript, javascriptParams);
+
+        Assert.assertEquals(false, result);
     }
 
     @Test

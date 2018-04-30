@@ -43,6 +43,14 @@ public class ApplicationOptimized {
         stopWatch.stop();
 
         LOGGER.info("Finished evaluating Javascript in {} seconds", stopWatch.getTime(TimeUnit.SECONDS));
+
+        // For Didactic purposes, wait so Visual VM analysis can be presented.
+        try {
+            LOGGER.info("Wait for 1 Hour. Please terminate application manually.");
+            TimeUnit.HOURS.sleep(1);
+        } catch (Exception e) {
+            LOGGER.error("An exception occurred during initial wait", e);
+        }
     }
 
 
